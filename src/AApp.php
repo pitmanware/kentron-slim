@@ -8,6 +8,10 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 use Kentron\Entity\TransportEntity;
+use Kentron\Store\AConfig;
+
+use Kentron\Template\Http\AController;
+use Kentron\Template\Http\AMiddleware;
 
 /**
  * The inital application class, injected into the controllers
@@ -168,7 +172,7 @@ abstract class AApp extends SlimApp
     private function getSlimContainer (): Container
     {
         $transportEntity = new TransportEntity();
-        $container = new Container($this->getSlimConfig());
+        $container = new Container(AConfig::getSlimConfig());
 
         $container["notFoundHandler"] = function ($container)
         {

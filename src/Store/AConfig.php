@@ -75,14 +75,14 @@ abstract class AConfig
      */
     public static function load (): void
     {
-        if (!file_exists(self::$configPath) || !is_readable(self::$configPath)) {
-            throw new \ErrorException("Config file '" . self::$configPath . "' does not exist or is not readable");
+        if (!file_exists(static::$configPath) || !is_readable(static::$configPath)) {
+            throw new \ErrorException("Config file '" . static::$configPath . "' does not exist or is not readable");
         }
 
-        $appConfig = json_decode(file_get_contents(self::$configPath), true);
+        $appConfig = json_decode(file_get_contents(static::$configPath), true);
 
         if (is_null($appConfig)) {
-            throw new \UnexpectedValueException("Config file '" . self::$configPath . "' is not valid JSON");
+            throw new \UnexpectedValueException("Config file '" . static::$configPath . "' is not valid JSON");
         }
 
         self::$config = $appConfig;

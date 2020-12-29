@@ -1,11 +1,15 @@
 <?php
 
-namespace Kentron\Http;
+namespace Kentron\Template\Http;
 
 use Kentron\AApp;
 
 abstract class ARouter
 {
+    protected static $apiRoutePath;
+    protected static $ajaxRoutePath;
+    protected static $systemRoutePath;
+
     /**
      * Loads all routes
      *
@@ -25,7 +29,12 @@ abstract class ARouter
      *
      * @return void
      */
-    abstract protected static function loadApiRoutes (AApp $app): void;
+    protected static function loadApiRoutes (AApp $app): void
+    {
+        if (is_string(static::$apiRoutePath)) {
+            require_once static::$apiRoutePath;
+        }
+    }
 
     /**
      * Load all the AJAX specific routes only
@@ -34,7 +43,12 @@ abstract class ARouter
      *
      * @return void
      */
-    abstract protected static function loadAjaxRoutes (AApp $app): void;
+    protected static function loadAjaxRoutes (AApp $app): void
+    {
+        if (is_string(static::$ajaxRoutePath)) {
+            require_once static::$ajaxRoutePath;
+        }
+    }
 
     /**
      * Load all the System specific routes only
@@ -43,5 +57,10 @@ abstract class ARouter
      *
      * @return void
      */
-    abstract protected static function loadSystemRoutes (AApp $app): void;
+    protected static function loadSystemRoutes (AApp $app): void
+    {
+        if (is_string(static::$systemRoutePath)) {
+            require_once static::$systemRoutePath;
+        }
+    }
 }
