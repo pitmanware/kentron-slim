@@ -1,8 +1,9 @@
 <?php
 
-namespace Kentron\Template\Http;
+namespace Kentron\Store;
 
 use Kentron\Store\Variable\AVariable;
+
 use Kentron\Service\Assert;
 use Kentron\Service\System\Client;
 

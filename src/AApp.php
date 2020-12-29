@@ -8,7 +8,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 use Kentron\Entity\TransportEntity;
-use Kentron\Template\Http\AConfig;
 
 /**
  * The inital application class, injected into the controllers
@@ -18,9 +17,9 @@ abstract class AApp extends SlimApp
     /**
      * Load up the Slim, Capsule and local systems
      */
-    public function __construct (AConfig $config)
+    public function __construct ()
     {
-        $config::load();
+        $this->loadConfig();
 
         parent::__construct($this->getSlimContainer());
 
@@ -42,6 +41,13 @@ abstract class AApp extends SlimApp
     /**
      * Abstract Methods
      */
+
+    /**
+     * Load in the config file
+     *
+     * @return void
+     */
+    abstract protected function loadConfig (): void;
 
     /**
      * Set up the database connection
