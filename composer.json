@@ -1,5 +1,6 @@
 {
     "name": "pitmanware/kentron-slim",
+    "version": "2.0.1",
     "description": "Slim wrapper for Kentron",
     "license": "MIT",
     "minimum-stability": "stable",
