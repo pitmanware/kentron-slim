@@ -2,13 +2,15 @@
 
 namespace Kentron;
 
-use Kentron\Entity\SlimTransportEntity;
 use Slim\App as SlimApp;
 
-use Kentron\Template\{IApp,TApp};
+use Kentron\Entity\SlimTransportEntity;
+use Kentron\Template\IApp;
+use Kentron\Template\TApp;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Container\ContainerInterface;
+
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\MiddlewareDispatcherInterface;
 use Slim\Interfaces\RouteCollectorInterface;
@@ -17,17 +19,17 @@ use Slim\Interfaces\RouteResolverInterface;
 /**
  * The inital application class, injected into the controllers
  */
-abstract class AApp extends SlimApp implements IApp
+abstract class ASlimApp extends SlimApp implements IApp
 {
     use TApp;
 
     /**
-     * @param ResponseFactoryInterface              $responseFactory
-     * @param ContainerInterface|null               $container
-     * @param CallableResolverInterface|null        $callableResolver
-     * @param RouteCollectorInterface|null          $routeCollector
-     * @param RouteResolverInterface|null           $routeResolver
-     * @param MiddlewareDispatcherInterface|null    $middlewareDispatcher
+     * @param ResponseFactoryInterface           $responseFactory
+     * @param ContainerInterface|null            $container
+     * @param CallableResolverInterface|null     $callableResolver
+     * @param RouteCollectorInterface|null       $routeCollector
+     * @param RouteResolverInterface|null        $routeResolver
+     * @param MiddlewareDispatcherInterface|null $middlewareDispatcher
      */
     public function __construct(
         ResponseFactoryInterface $responseFactory,

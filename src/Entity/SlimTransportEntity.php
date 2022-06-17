@@ -4,39 +4,28 @@ namespace Kentron\Entity;
 
 use Psr\Http\Message\ServerRequestInterface;
 
-use Slim\Interfaces\RouteInterface;
 use Slim\Routing\RouteContext;
 
 final class SlimTransportEntity extends TransportEntity
 {
-    /** The slim route context */
-    protected RouteInterface $route;
-
     /** The name of the route */
     protected string|null $routeName = null;
+
+    /** The arguments of the route if there are any */
+    protected array $routeArguments = [];
 
     /**
      * Getters
      */
 
-    public function getRoute(): RouteInterface
-    {
-        return $this->route;
-    }
-
-    public function getRouteName (): ?string
+    public function getRouteName(): string
     {
         return $this->routeName;
     }
 
-    public function getRouteArgument(string $key): ?string
+    public function getRouteArgument(string $key): int|string|null
     {
-        return $this->route->getArgument($key);
-    }
-
-    public function getRouteArguments(): array
-    {
-        return $this->route->getArguments();
+        return $this->routeArguments[$key] ?? null;
     }
 
     /**
@@ -47,12 +36,9 @@ final class SlimTransportEntity extends TransportEntity
     {
         parent::setRequest($request);
 
-        $this->route = RouteContext::fromRequest($this->request)->getRoute();
-        $this->routeName = $this->route->getName() ?? null;
-    }
+        $route = RouteContext::fromRequest($this->request)->getRoute();
 
-    public function setRouteName(?string $name = null): void
-    {
-        $this->routeName = $name;
+        $this->routeName = $route->getName() ?? null;
+        $this->routeArguments = $route->getArguments();
     }
 }
