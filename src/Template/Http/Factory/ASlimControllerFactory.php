@@ -7,7 +7,7 @@ use Kentron\Entity\SlimTransportEntity;
 
 use Kentron\Template\Store\SlimAppStore;
 
-abstract class AControllerFactory extends AControllerFactory
+abstract class ASlimControllerFactory extends AControllerFactory
 {
     protected static function getTransportEntity(): SlimTransportEntity
     {
