@@ -6,7 +6,7 @@ namespace Kentron\Template\Store;
 use Kentron\Entity\SlimTransportEntity;
 use Kentron\Entity\TransportEntity;
 
-class SlimApp extends App
+class SlimAppStore extends AppStore
 {
     public static function getTransportEntity(): TransportEntity|SlimTransportEntity
     {
