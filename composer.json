@@ -1,6 +1,6 @@
 {
     "name": "pitmanware/kentron-slim",
-    "version": "3.1.1",
+    "version": "4.0.0",
     "description": "Slim wrapper for Kentron",
     "license": "MIT",
     "minimum-stability": "stable",
@@ -10,9 +10,8 @@
         }
     ],
     "require": {
-        "php": "^8.0",
         "slim/slim": "^4.0",
-        "pitmanware/kentron": "^3.1.1"
+        "pitmanware/kentron": "^4.2"
     },
     "autoload": {
         "psr-4" : {
